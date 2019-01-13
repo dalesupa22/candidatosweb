@@ -17,8 +17,10 @@ export class DataService {
     return this.http.get<T>(finalUrl);
   }
 
-  public getSingle<T>(id: number): Observable<T> {
-    const finalUrl = `${this.actionUrl}getRecordsByParameter`;
+  public getSingle<T>(category: String, subCategory: String): Observable<T> {
+    const finalUrl =
+      `${this.actionUrl}getRecordsByParameter?categoryA=${category}&categoryB=${subCategory}`;
+
     return this.http.get<T>(finalUrl);
   }
 }
