@@ -1,5 +1,5 @@
 <div class="h-100 d-flex">
-  <div class="bg-light h-100 side text-center">
+  <div class="bg-light side text-center">
     <span class="font-weight-bold">Filtro</span>
     <div class="filter">
       <a href="" data-title="Corrupción">
@@ -30,7 +30,9 @@
   </div>
   <div class="w-100">
     <div class="map">
-      Map
+      <div *ngFor="let item of data">
+        <p>{{ item.id }} - {{ item.name }}</p>
+      </div>
     </div>
     <div class="bg-light py-3 pr-3 d-flex justify-content-end fixed-bottom foot">
       <div class="social-network">

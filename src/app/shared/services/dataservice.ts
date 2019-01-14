@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Configuration } from 'src/app/app.constants';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Record, Records } from '../models/records';
 
 @Injectable()
 export class DataService {
@@ -12,15 +13,15 @@ export class DataService {
     this.actionUrl = `${_configuration.ServerWithApi}recordController/`;
   }
 
-  public getAll<T>(): Observable<T> {
+  public getAll(): Observable<Records> {
     const finalUrl = `${this.actionUrl}getAllRecords`;
-    return this.http.get<T>(finalUrl);
+    return this.http.get<Records>(finalUrl);
   }
 
-  public getSingle<T>(category: String, subCategory: String): Observable<T> {
+  public getSingle(category: String, subCategory: String): Observable<Record> {
     const finalUrl =
       `${this.actionUrl}getRecordsByParameter?categoryA=${category}&categoryB=${subCategory}`;
 
-    return this.http.get<T>(finalUrl);
+    return this.http.get<Record>(finalUrl);
   }
 }
