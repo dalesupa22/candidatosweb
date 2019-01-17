@@ -34,13 +34,13 @@
         {{ subcategoryTitle }}
       </div>
       <div class="col-5 div-select">
-        <select>
+        <select (change)="selectValue($event.target.value)">
           <option value="0">Seleccione uno</option>
-          <option *ngFor="let item of dataSelect" value="{{item.id}}">{{item.name}}</option> 
+          <option *ngFor="let item of dataSelect" value="{{item.id}}">{{ item.name }}</option> 
         </select>
       </div>
       <div class="col-2">
-        <button class="btn btn-primary btn-lg">Buscar</button>
+        <button class="btn btn-primary btn-lg" (click)="searchResults()">Buscar</button>
       </div>
     </div>
     <div id="mapCO" class="map">

@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Records } from 'src/app/shared/models/records';
+import { Record } from 'src/app/shared/models/records';
 import { DataService } from 'src/app/shared/services/dataservice';
 import { SubCategory } from 'src/app/shared/models/subcategory';
 
@@ -24,7 +24,7 @@ export class ResultsComponent implements OnInit {
   public dataSelect: SubCategory[];
   public subcategoryTitle: String;
 
-  public data: Records;
+  public data: Record;
   public message: String;
 
   constructor(private router: Router, private dataService: DataService) { }
@@ -33,20 +33,27 @@ export class ResultsComponent implements OnInit {
     this.category = 'C';
     this.subcategoryTitle = `Selecciona la subcategoría para 'Corrupción'`;
     this.fillSelectOptions('Corrupción');
-
-    // this.dataService.getAll()
-    //   .subscribe((data: Records) => {
-    //     this.data = data;
-    //   }, error => () => {
-    //     console.log('Ocurrió un error al traer los datos', error);
-    //   }, () => {
-    //     console.log('Se obtienen los datos');
-    //   });
   }
 
   public clickCategory(category: String) {
     this.subcategoryTitle = `Selecciona la subcategoría para '${category}'`;
     this.fillSelectOptions(category);
+  }
+
+  public selectValue(value: any) {
+    this.subcategory = value;
+  }
+
+  public searchResults() {
+    this.dataService.getSingle(this.category, this.subcategory)
+      .subscribe((data: Record) => {
+        this.data = data;
+        console.log(data);
+      }, error => () => {
+        console.log('Ocurrió un error al traer los datos', error);
+      }, () => {
+        console.log('Se obtienen los datos');
+      });
   }
 
   public redirect(event) {
@@ -57,27 +64,35 @@ export class ResultsComponent implements OnInit {
   private fillSelectOptions(category) {
     switch (category) {
       case 'Corrupción':
+        this.category = 'C';
         this.dataSelect = this.getCategoryCorruption();
         break;
       case 'Educación':
+        this.category = 'E';
         this.dataSelect = this.getCategoryEducation();
         break;
       case 'Salud':
+        this.category = 'S';
         this.dataSelect = this.getCategoryHealth();
         break;
       case 'Seguridad':
+        this.category = 'S';
         this.dataSelect = this.getCategorySecurity();
         break;
       case 'Ambiente':
+        this.category = 'A';
         this.dataSelect = this.getCategoryEnvironment();
         break;
       case 'Discriminación':
+        this.category = 'D';
         this.dataSelect = this.getCategoryDiscrimination();
         break;
       case 'Movilidad':
+        this.category = 'M';
         this.dataSelect = this.getCategoryTransport();
         break;
       case 'Infancia':
+        this.category = 'I';
         this.dataSelect = this.getCategoryInfant();
         break;
     }
