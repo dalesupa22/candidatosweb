@@ -2,38 +2,52 @@
   <div class="bg-light side text-center">
     <span class="font-weight-bold">Filtro</span>
     <div class="filter">
-      <a href="" data-title="Corrupción">
+      <a class="category-btn" data-title="Corrupción" (click)="clickCategory('Corrupción')">
         <img src="../assets/images/mouse.fw.png" alt="" class="img-fluid">
       </a>
-      <a href="" data-title="Educación">
+      <a class="category-btn" data-title="Educación" (click)="clickCategory('Educación')">
         <img src="../assets/images/educacion.fw.png" alt="" class="img-fluid">
       </a>
-      <a href="" data-title="Medicina">
+      <a class="category-btn" data-title="Salud" (click)="clickCategory('Salud')">
         <img src="../assets/images/medicina.fw.png" alt="" class="img-fluid">
       </a>
-      <a href="" data-title="Seguridad">
+      <a class="category-btn" data-title="Seguridad" (click)="clickCategory('Seguridad')">
         <img src="../assets/images/seguridad.fw.png" alt="" class="img-fluid">
       </a>
-      <a href="" data-title="Ambiente">
+      <a class="category-btn" data-title="Ambiente" (click)="clickCategory('Ambiente')">
         <img src="../assets/images/ambiente.fw.png" alt="" class="img-fluid">
       </a>
-      <a href="" data-title="Discriminación">
+      <a class="category-btn" data-title="Discriminación" (click)="clickCategory('Discriminación')">
         <img src="../assets/images/discriminacion.fw.png" alt="" class="img-fluid">
       </a>
-      <a href="" data-title="Transporte">
+      <a class="category-btn" data-title="Movilidad" (click)="clickCategory('Movilidad')">
         <img src="../assets/images/transporte.fw.png" alt="" class="img-fluid">
       </a>
-      <a href="" data-title="Niños">
+      <a class="category-btn" data-title="Infancia" (click)="clickCategory('Infancia')">
         <img src="../assets/images/ninos.fw.png" alt="" class="img-fluid">
       </a>
     </div>
   </div>
   <div class="w-100">
-    <div class="map">
-      <div *ngFor="let item of data">
-        <p>{{ item.id }} - {{ item.name }}</p>
+    <div class="row subcategory bg-light text-center">
+      <div class="col-3">
+        {{ subcategoryTitle }}
+      </div>
+      <div class="col-5 div-select">
+        <select>
+          <option value="0">Seleccione uno</option>
+          <option *ngFor="let item of dataSelect" value="{{item.id}}">{{item.name}}</option> 
+        </select>
+      </div>
+      <div class="col-2">
+        <button class="btn btn-primary btn-lg">Buscar</button>
       </div>
     </div>
+    <div id="mapCO" class="map">
+    </div>
+    <!-- <div *ngFor="let item of data">
+      <p>{{ item.id }} - {{ item.name }}</p>
+    </div> -->
     <div class="bg-light py-3 pr-3 d-flex justify-content-end fixed-bottom foot">
       <div class="social-network">
         <a href=""><i class="fa fa-facebook-f"></i></a>

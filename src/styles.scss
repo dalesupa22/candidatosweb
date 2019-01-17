@@ -121,9 +121,6 @@ header {
   }
 }
 
-/*custom styles c*/
-//nothig
-
 /*custom styles d*/
 .side {
   width: 100px;
@@ -159,6 +156,23 @@ header {
       margin: 0 7px
     }
   }
+}
+
+.category-btn {
+  cursor: pointer;
+}
+
+.subcategory {
+  padding: 1rem;
+
+  .div-select {
+    padding: 10px;
+  }
+}
+
+/*map*/
+.map {
+  height: 500px !important;
 }
 
 @import "../node_modules/bootstrap/scss/bootstrap";
