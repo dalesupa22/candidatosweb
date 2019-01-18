@@ -16,10 +16,7 @@ am4core.useTheme(am4themes_animated);
   templateUrl: './results.component.html',
   styleUrls: ['./results.component.scss']
 })
-export class ResultsComponent implements OnInit {
-
-  public category: String;
-  public subcategory: String;
+export class ResultsComponent implements OnInit, AfterViewInit {
 
   public dataSelect: SubCategory[];
   public subcategoryTitle: String;
@@ -27,12 +24,49 @@ export class ResultsComponent implements OnInit {
   public data: Record;
   public message: String;
 
+  private category: String;
+  private subcategory: String;
+  private chart: any;
+
   constructor(private router: Router, private dataService: DataService) { }
 
   ngOnInit() {
     this.category = 'C';
     this.subcategoryTitle = `Selecciona la subcategoría para 'Corrupción'`;
     this.fillSelectOptions('Corrupción');
+  }
+
+  ngAfterViewInit() {
+    this.chart = am4core.create('mapCO', am4maps.MapChart);
+
+    this.chart.geodata = am4geodata_colombiaHigh;
+    this.chart.projection = new am4maps.projections.Miller();
+
+    this.chart.zoomControl = new am4maps.ZoomControl();
+    this.chart.zoomControl.zIndex = 10;
+
+    const loadingLabel = this.chart.chartContainer.createChild(am4core.Label);
+    loadingLabel.verticalCenter = 'middle';
+    loadingLabel.y = am4core.percent(50);
+    loadingLabel.dy = -10;
+    loadingLabel.horizontalCenter = 'middle';
+    loadingLabel.align = 'center';
+
+    const colombiaSeries = this.chart.series.push(new am4maps.MapPolygonSeries());
+    colombiaSeries.useGeodata = true;
+    colombiaSeries.mapPolygons.template.events.on('hit', (ev) => {
+      this.chart.zoomToMapObject(ev.target);
+    });
+
+    const label = this.chart.chartContainer.createChild(am4core.Label);
+    label.text = 'Mapa de resultados';
+
+    const polygonTemplate = colombiaSeries.mapPolygons.template;
+    polygonTemplate.tooltipText = '{name}';
+    polygonTemplate.fill = am4core.color('#16C6CC');
+
+    const hs = polygonTemplate.states.create('hover');
+    hs.properties.fill = am4core.color('#C8C4BE');
   }
 
   public clickCategory(category: String) {
