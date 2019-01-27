@@ -25,4 +25,8 @@ export class DataService {
 
     return this.http.get<Record>(finalUrl);
   }
+
+  public getMockDataFromJSONLocal(file: String) {
+    return this.http.get(`assets/json/${file}.json`);
+  }
 }

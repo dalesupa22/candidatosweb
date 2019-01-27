@@ -27,6 +27,8 @@ export class ResultsComponent implements OnInit, AfterViewInit {
   private category: String;
   private subcategory: String;
   private chart: any;
+  private imageSeries: any;
+  private valueNum: String; // Mock Data
 
   constructor(private router: Router, private dataService: DataService) { }
 
@@ -58,15 +60,124 @@ export class ResultsComponent implements OnInit, AfterViewInit {
       this.chart.zoomToMapObject(ev.target);
     });
 
+    // tslint:disable-next-line:max-line-length
+    colombiaSeries.geodataSource.url = 'https://gist.githubusercontent.com/notacouch/edbf796ff35ddd0bd0a0dc365660aa1f/raw/eb19cc3fbbdcf2ff8cfb1474305f4bad9a144994/colombia-states-cities-combined.json';
+
     const label = this.chart.chartContainer.createChild(am4core.Label);
     label.text = 'Mapa de resultados';
 
     const polygonTemplate = colombiaSeries.mapPolygons.template;
-    polygonTemplate.tooltipText = '{name}';
+    polygonTemplate.tooltipText = '{NAME_1}';
     polygonTemplate.fill = am4core.color('#16C6CC');
 
     const hs = polygonTemplate.states.create('hover');
     hs.properties.fill = am4core.color('#C8C4BE');
+
+    const states = [];
+    const cities = [];
+
+    const cityColor = am4core.color('#8CD790');
+    const cityHoverColor = am4core.color('#77AF9C');
+    const cityOpacity = 0.2;
+    let stateBrightenLevel = -0.7;
+
+    colombiaSeries.events.on('validated', () => {
+      if (colombiaSeries.mapPolygons.length) {
+
+        setTimeout(() => {
+          loadingLabel.hide();
+        }, 100);
+
+        colombiaSeries.mapPolygons.each(polygon => {
+          const citySpriteState = polygon.states.create('cityMode');
+          const stateSpriteState = polygon.states.create('stateMode');
+          const data = polygon.dataItem.dataContext;
+
+          if (data.GID_2) {
+            cities.push(polygon);
+            polygon.tooltipText = '{NAME_2}, {NAME_1}';
+
+            polygon.fill = cityColor;
+            polygon.fillOpacity = cityOpacity;
+            polygon.strokeOpacity = cityOpacity;
+            polygon.defaultState.fill = cityColor;
+            polygon.defaultState.fillOpacity = cityOpacity;
+            polygon.defaultState.strokeOpacity = cityOpacity;
+
+            polygon.states.getKey('hover').properties.fill = cityHoverColor;
+            polygon.states.getKey('hover').properties.fillOpacity = 1;
+
+            citySpriteState.properties.fill = cityColor;
+            citySpriteState.properties.fillOpacity = cityOpacity;
+            stateSpriteState.properties.fillOpacity = 0;
+
+            polygon.hide();
+          } else {
+            states.push(polygon);
+
+            if (stateBrightenLevel === 0.6) {
+              stateBrightenLevel = -0.7;
+            }
+
+            stateBrightenLevel += 0.1;
+
+            const customColor = polygonTemplate.fill.brighten(stateBrightenLevel);
+            polygon.fill = customColor;
+            polygon.defaultState.properties.fill = customColor;
+
+            citySpriteState.properties.fillOpacity = 0;
+          }
+        });
+
+        colombiaSeries.visible = true;
+      }
+    });
+
+    polygonTemplate.events.on('hit', ev => {
+      this.chart.zoomToMapObject(ev.target);
+
+      if (!ev.target.dataItem.dataContext.GID_2) {
+        cities.forEach(city => {
+          city.show();
+        });
+      }
+    });
+
+    let zoomLevel = 1;
+    const cityThreshold = 2.5;
+
+    this.chart.events.on('zoomlevelchanged', (x) => {
+      const currentZoom = this.chart.zoomLevel;
+
+      if ((zoomLevel >= cityThreshold) && (this.chart.zoomLevel < cityThreshold)) {
+        const total_cities = cities.length;
+
+        cities.forEach(function (city, index) {
+          const animation = city.hide();
+        });
+      }
+
+      zoomLevel = this.chart.zoomLevel;
+    });
+
+    this.imageSeries = this.chart.series.push(new am4maps.MapImageSeries());
+    const imageTemplate = this.imageSeries.mapImages.template;
+    imageTemplate.propertyFields.longitude = 'longitude';
+    imageTemplate.propertyFields.latitude = 'latitude';
+    imageTemplate.nonScaling = true;
+
+    const image = imageTemplate.createChild(am4core.Image);
+    image.propertyFields.href = 'imageURL';
+    image.width = 50;
+    image.height = 50;
+    image.horizontalCenter = 'middle';
+    image.verticalCenter = 'middle';
+
+    const imageLabel = imageTemplate.createChild(am4core.Label);
+    imageLabel.text = '{label}';
+    imageLabel.horizontalCenter = 'middle';
+    imageLabel.verticalCenter = 'top';
+    imageLabel.dy = 20;
   }
 
   public clickCategory(category: String) {
@@ -88,6 +199,9 @@ export class ResultsComponent implements OnInit, AfterViewInit {
       }, () => {
         console.log('Se obtienen los datos');
       });
+
+    // Mock Data
+    this.showData(this.valueNum);
   }
 
   public redirect(event) {
@@ -142,6 +256,9 @@ export class ResultsComponent implements OnInit, AfterViewInit {
     subCatList.push({ id: 'C3', name: 'Salud' });
     subCatList.push({ id: 'C4', name: 'Otros' });
 
+    // Mock Data
+    this.valueNum = '1';
+
     return subCatList;
   }
 
@@ -155,6 +272,9 @@ export class ResultsComponent implements OnInit, AfterViewInit {
     subCatList.push({ id: 'E5', name: '(Univ.) - No hay como llegar al centro educativo' });
     subCatList.push({ id: 'E6', name: '(Univ.) - No hay quién dicte clases en el centro educativo' });
 
+    // Mock Data
+    this.valueNum = '2';
+
     return subCatList;
   }
 
@@ -166,6 +286,9 @@ export class ResultsComponent implements OnInit, AfterViewInit {
     subCatList.push({ id: 'S3', name: 'Autorizaciones' });
     subCatList.push({ id: 'S4', name: 'Entrega de Medicamentos' });
     subCatList.push({ id: 'S5', name: 'No hay acceso a un centro de salud a menos de 30 Km' });
+
+    // Mock Data
+    this.valueNum = '1';
 
     return subCatList;
   }
@@ -179,6 +302,9 @@ export class ResultsComponent implements OnInit, AfterViewInit {
     subCatList.push({ id: 'S4', name: 'Desplazamiento' });
     subCatList.push({ id: 'S5', name: 'Víctima de robo' });
     subCatList.push({ id: 'S6', name: 'Riñas' });
+
+    // Mock Data
+    this.valueNum = '2';
 
     return subCatList;
   }
@@ -194,6 +320,9 @@ export class ResultsComponent implements OnInit, AfterViewInit {
     subCatList.push({ id: '', name: 'Deforestación' });
     subCatList.push({ id: 'A6', name: 'Plagas' });
 
+    // Mock Data
+    this.valueNum = '1';
+
     return subCatList;
   }
 
@@ -205,6 +334,9 @@ export class ResultsComponent implements OnInit, AfterViewInit {
     subCatList.push({ id: 'D3', name: 'Social' });
     subCatList.push({ id: 'D4', name: 'Ideológica' });
 
+    // Mock Data
+    this.valueNum = '2';
+
     return subCatList;
   }
 
@@ -215,6 +347,9 @@ export class ResultsComponent implements OnInit, AfterViewInit {
     subCatList.push({ id: 'M2', name: 'No hay carreteras o infraestructura para usar un medo de transporte' });
     subCatList.push({ id: 'M3', name: 'Señalización' });
     subCatList.push({ id: 'M4', name: 'Hay accidentes en la vía' });
+
+    // Mock Data
+    this.valueNum = '1';
 
     return subCatList;
   }
@@ -228,7 +363,32 @@ export class ResultsComponent implements OnInit, AfterViewInit {
     subCatList.push({ id: 'I4', name: 'Salud' });
     subCatList.push({ id: 'I5', name: 'Educación' });
 
+    // Mock Data
+    this.valueNum = '2';
+
     return subCatList;
   }
 
+  private showData(value: String) {
+    this.imageSeries.data = [];
+
+    // Mock Data
+    console.log(value);
+
+    if (value === '1') {
+      this.dataService.getMockDataFromJSONLocal('data1').subscribe(data => {
+        this.imageSeries.data = data;
+      }, err => {
+        console.log('error: ', err);
+      });
+    } else {
+      this.dataService.getMockDataFromJSONLocal('data2').subscribe(data => {
+        this.imageSeries.data = data;
+      }, err => {
+        console.log('error: ', err);
+      });
+    }
+
+    // End Mock Data
+  }
 }
