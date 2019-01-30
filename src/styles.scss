@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
 
+/*variables*/
+
 $font-family-sans-serif: 'Open Sans',
 sans-serif;
 $font-size-base: .9rem !default;
 
 $primary: #16c6cc !default;
 $secondary: #424770 !default;
-$text-color-btn: #FFFFFF !default;
 
 $headings-color: $secondary !default;
 
@@ -81,7 +82,7 @@ $btn-border-radius-sm: 100rem !default;
   a {
     display: inline-block;
     background: $primary;
-    color: $text-color-btn !important;
+    color: #fff;
     padding: .5rem 1rem;
     border-radius: 5rem;
     transition: .2s all;
@@ -121,6 +122,9 @@ header {
   }
 }
 
+/*custom styles c*/
+//nothig
+
 /*custom styles d*/
 .side {
   width: 100px;
@@ -140,7 +144,7 @@ header {
         background: $primary;
         padding: .5rem .8rem;
         border-radius: 5rem;
-        color: $text-color-btn;
+        color: white;
         transform: translateY(-50%)
       }
     }
@@ -176,4 +180,3 @@ header {
 }
 
 @import "../node_modules/bootstrap/scss/bootstrap";
-@import "../node_modules/font-awesome/css/font-awesome.css";

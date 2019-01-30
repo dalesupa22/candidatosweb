@@ -63,9 +63,6 @@ export class ResultsComponent implements OnInit, AfterViewInit {
     // tslint:disable-next-line:max-line-length
     colombiaSeries.geodataSource.url = 'https://gist.githubusercontent.com/notacouch/edbf796ff35ddd0bd0a0dc365660aa1f/raw/eb19cc3fbbdcf2ff8cfb1474305f4bad9a144994/colombia-states-cities-combined.json';
 
-    const label = this.chart.chartContainer.createChild(am4core.Label);
-    label.text = 'Mapa de resultados';
-
     const polygonTemplate = colombiaSeries.mapPolygons.template;
     polygonTemplate.tooltipText = '{NAME_1}';
     polygonTemplate.fill = am4core.color('#16C6CC');

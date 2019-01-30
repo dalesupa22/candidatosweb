@@ -1,27 +1,39 @@
 <app-header></app-header>
 <div class="container">
-  <div class="row text-center py-5 mb-5">
-    <div class="col-sm-3">
-      <img src="../assets/images/1.png" alt="">
-      <p class="mt-4">Captura de información de la población</p>
+  <div class="row text-center pt-0 pb-4">
+    <div class="col-md-6 col-lg-3 col-xl-3">
+      <picture>
+        <source media="(max-width: 1199px)" srcset="../assets/images/11.png">
+        <img src="../assets/images/1.png" alt="" class="ml-0 ml-lg-5">
+      </picture>
+      <p class="mt-4">Captura de información de la problación</p>
     </div>
-    <div class="col-sm-3">
-      <img src="../assets/images/2.png" alt="">
+    <div class="col-md-6 col-lg-3 col-xl-3">
+      <picture>
+        <source media="(max-width: 1199px)" srcset="../assets/images/22.png">
+        <img src="../assets/images/2.png" alt="" class="ml-0 ml-lg-5 pl-0 ml-lg-3">
+      </picture>
       <p class="mt-4">Segmentación de información</p>
     </div>
-    <div class="col-sm-3">
-      <img src="../assets/images/3.png" alt="">
+    <div class="col-md-6 col-lg-3 col-xl-3">
+      <picture>
+        <source media="(max-width: 1199px)" srcset="../assets/images/33.png">
+        <img src="../assets/images/3.png" alt="" class="ml-0 ml-lg-5">
+      </picture>
       <p class="mt-4">Entrega de la información a las entidades publicas</p>
     </div>
-    <div class="col-sm-3">
-      <img src="../assets/images/4.png" alt="">
+    <div class="col-md-6 col-lg-3 col-xl-3">
+      <picture>
+        <source media="(max-width: 1199px)" srcset="../assets/images/44.png">
+        <img src="../assets/images/4.png" alt="">
+      </picture>
       <p class="mt-4">Publicación de resultados</p>
     </div>
-    <div class="col-6 mt-4">
-      <a href="http://oigame.org/" target="_blank" class="btn btn-primary btn-lg">EMPEZAR FORMULARIO</a>
-    </div>
-    <div class="col-6 mt-4">
-      <button class="btn btn-primary btn-lg" (click)="redirect($event)">CONSULTAR RESULTADOS</button>
+  </div>
+  <div class="row mb-5">
+    <div class="col-12 d-flex justify-content-around flex-md-row flex-column">
+      <a href="http://oigame.org/" target="_blank" class="btn btn-primary btn-lg px-4">EMPEZAR FORMULARIO</a>
+      <button class="btn btn-primary btn-lg px-4 mt-2 mt-lg-0" (click)="redirect($event)">CONSULTAR RESULTADOS</button>
     </div>
   </div>
 </div>
