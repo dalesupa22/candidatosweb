@@ -75,7 +75,7 @@ header {
   width: 100px;
   // padding: 1.9rem;
   height: calc(100% - 53px);
-  z-index: 9;
+  z-index: 99;
 
   .toggle {
     display: none
@@ -90,6 +90,10 @@ header {
       left: 100px;
       top: 0;
       z-index: 999
+    }
+
+    .zindex {
+      margin-left: 45px;
     }
   }
 
@@ -157,6 +161,10 @@ header {
   @media (max-width: 900px) {
     left: 0;
     width: 100%;
+
+    .zindex {
+      margin-left: 45px;
+    }
   }
 }
 
@@ -217,7 +225,11 @@ header {
 }
 
 .zindex {
-  z-index: 9999;
+  z-index: 9;
+}
+
+.h-100 {
+  height: 100% !important;
 }
 
 @import "../node_modules/bootstrap/scss/bootstrap";

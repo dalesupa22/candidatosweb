@@ -1,79 +1,59 @@
-<div class="bg-light text-center position-absolute side">
-  <strong class="d-block py-3">Filtros</strong>
-  <button class="btn btn-primary rounded-left toggle"><i class="fas fa-search"></i></button>
-  <div data-simplebar>
-    <div class="filter">
-      <a category-btn data-title="Corrupción" [ngClass]="{active: subcategoryTitle === 'Corrupción'}" (click)="clickCategory('Corrupción')">
-        <span class="icon-9"></span>
-      </a>
-      <a category-btn data-title="Educación" [ngClass]="{active: subcategoryTitle === 'Educación'}" (click)="clickCategory('Educación')">
-        <span class="icon-4"></span>
-      </a>
-      <a category-btn data-title="Salud" [ngClass]="{active: subcategoryTitle === 'Salud'}" (click)="clickCategory('Salud')">
-        <span class="icon-2"></span>
-      </a>
-      <a category-btn data-title="Seguridad" [ngClass]="{active: subcategoryTitle === 'Seguridad'}" (click)="clickCategory('Seguridad')">
-        <span class="icon-8"></span>
-      </a>
-      <a category-btn data-title="Ambiente" [ngClass]="{active: subcategoryTitle === 'Ambiente'}" (click)="clickCategory('Ambiente')">
-        <span class="icon-1"></span>
-      </a>
-      <a category-btn data-title="Discriminación" [ngClass]="{active: subcategoryTitle === 'Discriminación'}" (click)="clickCategory('Discriminación')">
-        <span class="icon-11"></span>
-      </a>
-      <a category-btn data-title="Movilidad" [ngClass]="{active: subcategoryTitle === 'Movilidad'}" (click)="clickCategory('Movilidad')">
-        <span class="icon-6"></span>
-      </a>
-      <a category-btn data-title="Infancia" [ngClass]="{active: subcategoryTitle === 'Infancia'}" (click)="clickCategory('Infancia')">
-        <span class="icon-3"></span>
-      </a>
-    </div>
-  </div>
-</div>
-<div class="position-absolute content">
-  <div class="map">
-    <div class="position-absolute bg-light p-3 d-flex align-items-start align-items-lg-center flex-lg-row flex-column options zindex">
-      <span class="gpl-2">Selecciona la subcategoría para <strong class="text-primary">{{ subcategoryTitle }}</strong></span>
-      <div class="mt-2 mt-lg-0">
-        <select class="ml-0 ml-lg-3 mr-3 py-2 pl-3 pr-5 shadow-sm border-0" (change)="selectValue($event.target.value)">
-          <option value="0">Seleccione uno</option>
-          <option *ngFor="let item of dataSelect" value="{{item.id}}">{{ item.name }}</option> 
-        </select>
-        <button class="btn btn-primary shadow-sm" (click)="searchResults()">Buscar</button>
+<div class="h-100">
+  <div class="bg-light text-center position-absolute side">
+    <strong class="d-block py-3">Filtros</strong>
+    <button class="btn btn-primary rounded-left toggle"><i class="fas fa-search"></i></button>
+    <div data-simplebar>
+      <div class="filter">
+        <a category-btn data-title="Corrupción" [ngClass]="{active: subcategoryTitle === 'Corrupción'}" (click)="clickCategory('Corrupción')">
+          <span class="icon-9"></span>
+        </a>
+        <a category-btn data-title="Educación" [ngClass]="{active: subcategoryTitle === 'Educación'}" (click)="clickCategory('Educación')">
+          <span class="icon-4"></span>
+        </a>
+        <a category-btn data-title="Salud" [ngClass]="{active: subcategoryTitle === 'Salud'}" (click)="clickCategory('Salud')">
+          <span class="icon-2"></span>
+        </a>
+        <a category-btn data-title="Seguridad" [ngClass]="{active: subcategoryTitle === 'Seguridad'}" (click)="clickCategory('Seguridad')">
+          <span class="icon-8"></span>
+        </a>
+        <a category-btn data-title="Ambiente" [ngClass]="{active: subcategoryTitle === 'Ambiente'}" (click)="clickCategory('Ambiente')">
+          <span class="icon-1"></span>
+        </a>
+        <a category-btn data-title="Discriminación" [ngClass]="{active: subcategoryTitle === 'Discriminación'}" (click)="clickCategory('Discriminación')">
+          <span class="icon-11"></span>
+        </a>
+        <a category-btn data-title="Movilidad" [ngClass]="{active: subcategoryTitle === 'Movilidad'}" (click)="clickCategory('Movilidad')">
+          <span class="icon-6"></span>
+        </a>
+        <a category-btn data-title="Infancia" [ngClass]="{active: subcategoryTitle === 'Infancia'}" (click)="clickCategory('Infancia')">
+          <span class="icon-3"></span>
+        </a>
       </div>
     </div>
-    <div id="mapCO" class="map">
-    </div>
   </div>
-  <div class="bg-light py-3 pr-3 d-flex justify-content-end fixed-bottom foot">
-    <div class="social-network">
-      <a href=""><i class="fab fa-facebook-f"></i></a>
-      <a href=""><i class="fab fa-twitter"></i></a>
-      <a href=""><i class="fab fa-slack-hash"></i></a>
-      <a href=""><i class="fab fa-pinterest-p"></i></a>
-      <a href=""><i class="fab fa-linkedin-in"></i></a>
+  <div class="position-absolute content">
+    <div class="map">
+      <div class="position-absolute bg-light p-3 d-flex align-items-start align-items-lg-center flex-lg-row flex-column options zindex">
+        <span class="gpl-2">Selecciona la subcategoría para <strong class="text-primary">{{ subcategoryTitle }}</strong></span>
+        <div class="mt-2 mt-lg-0">
+          <select class="ml-0 ml-lg-3 mr-3 py-2 pl-3 pr-5 shadow-sm border-0" (change)="selectValue($event.target.value)">
+            <option value="0">Seleccione uno</option>
+            <option *ngFor="let item of dataSelect" value="{{item.id}}">{{ item.name }}</option>
+          </select>
+          <button class="btn btn-primary shadow-sm" (click)="searchResults()">Buscar</button>
+        </div>
+      </div>
+      <div id="mapCO" class="map">
+      </div>
+    </div>
+    <div class="bg-light py-3 pr-3 d-flex justify-content-end fixed-bottom foot">
+      <div class="social-network">
+        <a href=""><i class="fab fa-facebook-f"></i></a>
+        <a href=""><i class="fab fa-twitter"></i></a>
+        <a href=""><i class="fab fa-slack-hash"></i></a>
+        <a href=""><i class="fab fa-pinterest-p"></i></a>
+        <a href=""><i class="fab fa-linkedin-in"></i></a>
+      </div>
     </div>
   </div>
 </div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://unpkg.com/simplebar@latest/dist/simplebar.js"></script>
-
-<script>
-  $(window).on('load', function () {
-    var toggle = false;
-    $('.toggle').click(function () {
-      toggle = !toggle;
-      if (toggle) {
-        $('.side').animate({
-          left: 0
-        });
-      } else {
-        $('.side').animate({
-          left: -100
-        });
-      }
-    });
-  });
-
-</script>
