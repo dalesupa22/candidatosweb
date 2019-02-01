@@ -34,7 +34,7 @@ export class ResultsComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.category = 'C';
-    this.subcategoryTitle = `Selecciona la subcategoría para 'Corrupción'`;
+    this.subcategoryTitle = `Corrupción`;
     this.fillSelectOptions('Corrupción');
   }
 
@@ -178,7 +178,7 @@ export class ResultsComponent implements OnInit, AfterViewInit {
   }
 
   public clickCategory(category: String) {
-    this.subcategoryTitle = `Selecciona la subcategoría para '${category}'`;
+    this.subcategoryTitle = category;
     this.fillSelectOptions(category);
   }
 
