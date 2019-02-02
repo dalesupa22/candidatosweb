@@ -1,5 +1,11 @@
 <app-header></app-header>
 <div class="container">
+  <div class="row mb-5">
+    <div class="col-12 d-flex justify-content-around flex-md-row flex-column">
+      <a href="http://oigame.org/" target="_blank" class="btn btn-primary btn-lg px-4">EMPEZAR FORMULARIO</a>
+      <button class="btn btn-primary btn-lg px-4 mt-2 mt-lg-0" (click)="redirect($event)">CONSULTAR RESULTADOS</button>
+    </div>
+  </div>
   <div class="row text-center pt-0 pb-4 steps">
     <div class="col-md-6 col-lg-3 col-xl-3">
       <picture>
@@ -28,12 +34,6 @@
         <img src="../assets/images/4.svg" alt="" height="218">
       </picture>
       <p class="mt-4">Publicación de resultados</p>
-    </div>
-  </div>
-  <div class="row mb-5">
-    <div class="col-12 d-flex justify-content-around flex-md-row flex-column">
-      <a href="http://oigame.org/" target="_blank" class="btn btn-primary btn-lg px-4">EMPEZAR FORMULARIO</a>
-      <button class="btn btn-primary btn-lg px-4 mt-2 mt-lg-0" (click)="redirect($event)">CONSULTAR RESULTADOS</button>
     </div>
   </div>
 </div>
