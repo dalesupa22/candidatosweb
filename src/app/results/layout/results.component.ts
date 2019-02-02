@@ -19,6 +19,7 @@ am4core.useTheme(am4themes_animated);
 export class ResultsComponent implements OnInit, AfterViewInit {
 
   public dataSelect: SubCategory[];
+  public categoryTitle: String;
   public subcategoryTitle: String;
 
   public data: Record;
@@ -28,12 +29,12 @@ export class ResultsComponent implements OnInit, AfterViewInit {
   private subcategory: String;
   private chart: any;
   private imageSeries: any;
-  private valueNum: String; // Mock Data
 
   constructor(private router: Router, private dataService: DataService) { }
 
   ngOnInit() {
     this.category = 'C';
+    this.categoryTitle = 'C';
     this.subcategoryTitle = `Corrupción`;
     this.fillSelectOptions('Corrupción');
   }
@@ -171,7 +172,7 @@ export class ResultsComponent implements OnInit, AfterViewInit {
     image.verticalCenter = 'middle';
 
     const imageLabel = imageTemplate.createChild(am4core.Label);
-    imageLabel.text = '{label}';
+    imageLabel.text = '{citName} - {countItems}';
     imageLabel.horizontalCenter = 'middle';
     imageLabel.verticalCenter = 'top';
     imageLabel.dy = 20;
@@ -186,21 +187,6 @@ export class ResultsComponent implements OnInit, AfterViewInit {
     this.subcategory = value;
   }
 
-  public searchResults() {
-    this.dataService.getSingle(this.category, this.subcategory)
-      .subscribe((data: Record) => {
-        this.data = data;
-        console.log(data);
-      }, error => () => {
-        console.log('Ocurrió un error al traer los datos', error);
-      }, () => {
-        console.log('Se obtienen los datos');
-      });
-
-    // Mock Data
-    this.showData(this.valueNum);
-  }
-
   public redirect(event) {
     console.log('redirect');
     this.router.navigate(['']);
@@ -210,34 +196,42 @@ export class ResultsComponent implements OnInit, AfterViewInit {
     switch (category) {
       case 'Corrupción':
         this.category = 'C';
+        this.categoryTitle = 'C';
         this.dataSelect = this.getCategoryCorruption();
         break;
       case 'Educación':
         this.category = 'E';
+        this.categoryTitle = 'E';
         this.dataSelect = this.getCategoryEducation();
         break;
       case 'Salud':
         this.category = 'S';
+        this.categoryTitle = 'S';
         this.dataSelect = this.getCategoryHealth();
         break;
       case 'Seguridad':
-        this.category = 'S';
+        this.category = 'G';
+        this.categoryTitle = 'G';
         this.dataSelect = this.getCategorySecurity();
         break;
       case 'Ambiente':
         this.category = 'A';
+        this.categoryTitle = 'A';
         this.dataSelect = this.getCategoryEnvironment();
         break;
       case 'Discriminación':
         this.category = 'D';
+        this.categoryTitle = 'D';
         this.dataSelect = this.getCategoryDiscrimination();
         break;
       case 'Movilidad':
         this.category = 'M';
+        this.categoryTitle = 'M';
         this.dataSelect = this.getCategoryTransport();
         break;
       case 'Infancia':
         this.category = 'I';
+        this.categoryTitle = 'I';
         this.dataSelect = this.getCategoryInfant();
         break;
     }
@@ -253,9 +247,6 @@ export class ResultsComponent implements OnInit, AfterViewInit {
     subCatList.push({ id: 'C3', name: 'Salud' });
     subCatList.push({ id: 'C4', name: 'Otros' });
 
-    // Mock Data
-    this.valueNum = '1';
-
     return subCatList;
   }
 
@@ -269,9 +260,6 @@ export class ResultsComponent implements OnInit, AfterViewInit {
     subCatList.push({ id: 'E5', name: '(Univ.) - No hay como llegar al centro educativo' });
     subCatList.push({ id: 'E6', name: '(Univ.) - No hay quién dicte clases en el centro educativo' });
 
-    // Mock Data
-    this.valueNum = '2';
-
     return subCatList;
   }
 
@@ -284,24 +272,18 @@ export class ResultsComponent implements OnInit, AfterViewInit {
     subCatList.push({ id: 'S4', name: 'Entrega de Medicamentos' });
     subCatList.push({ id: 'S5', name: 'No hay acceso a un centro de salud a menos de 30 Km' });
 
-    // Mock Data
-    this.valueNum = '1';
-
     return subCatList;
   }
 
   private getCategorySecurity(): SubCategory[] {
     const subCatList: SubCategory[] = [];
 
-    subCatList.push({ id: 'S1', name: 'Grupos al Margen de la Ley' });
-    subCatList.push({ id: 'S2', name: 'Violencia Intrafamiliar' });
-    subCatList.push({ id: 'S3', name: 'Amenazas' });
-    subCatList.push({ id: 'S4', name: 'Desplazamiento' });
-    subCatList.push({ id: 'S5', name: 'Víctima de robo' });
-    subCatList.push({ id: 'S6', name: 'Riñas' });
-
-    // Mock Data
-    this.valueNum = '2';
+    subCatList.push({ id: 'G1', name: 'Grupos al Margen de la Ley' });
+    subCatList.push({ id: 'G2', name: 'Violencia Intrafamiliar' });
+    subCatList.push({ id: 'G3', name: 'Amenazas' });
+    subCatList.push({ id: 'G4', name: 'Desplazamiento' });
+    subCatList.push({ id: 'G5', name: 'Víctima de robo' });
+    subCatList.push({ id: 'G6', name: 'Riñas' });
 
     return subCatList;
   }
@@ -317,9 +299,6 @@ export class ResultsComponent implements OnInit, AfterViewInit {
     subCatList.push({ id: '', name: 'Deforestación' });
     subCatList.push({ id: 'A6', name: 'Plagas' });
 
-    // Mock Data
-    this.valueNum = '1';
-
     return subCatList;
   }
 
@@ -331,9 +310,6 @@ export class ResultsComponent implements OnInit, AfterViewInit {
     subCatList.push({ id: 'D3', name: 'Social' });
     subCatList.push({ id: 'D4', name: 'Ideológica' });
 
-    // Mock Data
-    this.valueNum = '2';
-
     return subCatList;
   }
 
@@ -344,9 +320,6 @@ export class ResultsComponent implements OnInit, AfterViewInit {
     subCatList.push({ id: 'M2', name: 'No hay carreteras o infraestructura para usar un medo de transporte' });
     subCatList.push({ id: 'M3', name: 'Señalización' });
     subCatList.push({ id: 'M4', name: 'Hay accidentes en la vía' });
-
-    // Mock Data
-    this.valueNum = '1';
 
     return subCatList;
   }
@@ -360,32 +333,20 @@ export class ResultsComponent implements OnInit, AfterViewInit {
     subCatList.push({ id: 'I4', name: 'Salud' });
     subCatList.push({ id: 'I5', name: 'Educación' });
 
-    // Mock Data
-    this.valueNum = '2';
-
     return subCatList;
   }
 
-  private showData(value: String) {
+  public searchResults() {
     this.imageSeries.data = [];
 
-    // Mock Data
-    console.log(value);
-
-    if (value === '1') {
-      this.dataService.getMockDataFromJSONLocal('data1').subscribe(data => {
+    this.dataService.getSingle(this.category, this.subcategory)
+      .subscribe((data: Record) => {
         this.imageSeries.data = data;
-      }, err => {
-        console.log('error: ', err);
+        console.log(data);
+      }, error => () => {
+        console.log('Ocurrió un error al traer los datos', error);
+      }, () => {
+        console.log('Se obtienen los datos');
       });
-    } else {
-      this.dataService.getMockDataFromJSONLocal('data2').subscribe(data => {
-        this.imageSeries.data = data;
-      }, err => {
-        console.log('error: ', err);
-      });
-    }
-
-    // End Mock Data
   }
 }

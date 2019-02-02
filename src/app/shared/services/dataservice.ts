@@ -20,13 +20,9 @@ export class DataService {
 
   public getSingle(category: String, subCategory: String): Observable<Record> {
     const finalUrl =
-      `${this.actionUrl}getRecordsByParameter?categoryA=${category}&categoryB=${subCategory}`;
+      `${this.actionUrl}getRecordsByParametersWithCount?categoryA=${category}&categoryB=${subCategory}`;
     console.log(finalUrl);
 
     return this.http.get<Record>(finalUrl);
-  }
-
-  public getMockDataFromJSONLocal(file: String) {
-    return this.http.get(`assets/json/${file}.json`);
   }
 }
