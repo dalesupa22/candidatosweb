@@ -23,6 +23,6 @@ export class DataService {
       `${this.actionUrl}getRecordsByParametersWithCount?categoryA=${category}&categoryB=${subCategory}`;
     console.log(finalUrl);
 
-    return this.http.get<Record>(finalUrl);
+    return this.http.post<Record>(finalUrl, null);
   }
 }
