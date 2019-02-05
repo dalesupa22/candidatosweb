@@ -16,6 +16,13 @@ export interface Record {
     ipAddress: String;
     ipInfo: String;
     date: Date;
+    image: String;
+    staName: String;
+    citName: String;
+    citId: String;
+    latitude: Number;
+    longitude: Number;
+    countItems: Number;
 }
 
 export interface Records {

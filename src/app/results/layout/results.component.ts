@@ -165,9 +165,9 @@ export class ResultsComponent implements OnInit, AfterViewInit {
     imageTemplate.nonScaling = true;
 
     const image = imageTemplate.createChild(am4core.Image);
-    image.propertyFields.href = 'imageURL';
-    image.width = 50;
-    image.height = 50;
+    image.propertyFields.href = 'image';
+    image.width = 100;
+    image.height = 100;
     image.horizontalCenter = 'middle';
     image.verticalCenter = 'middle';
 
