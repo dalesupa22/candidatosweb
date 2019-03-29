@@ -211,3 +211,16 @@ header {
   color: #6610F2;
   border: 3px solid #9281EF;
 }
+
+header .social-network a {
+  color: #848484;
+  margin-right: 40px;
+}
+
+header .social-network a:hover {
+  color: #16c6cc;
+}
+
+header .text-center {
+  margin-top: 50px;
+}
