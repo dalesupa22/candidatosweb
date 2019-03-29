@@ -8,6 +8,21 @@
     font-weight: normal;
     font-style: normal;
   }
+
+  @font-face {
+    font-family: 'PT Sans';
+    src:  url('fonts/PT_Sans/PT_Sans-Web-Regular.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Oswald';
+    src:  url('fonts/Oswald/Oswald-Regular.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Oswald Bold';
+    src:  url('fonts/Oswald/Oswald-Bold.ttf') format('truetype');
+  }
   
   [class^="icon-"], [class*=" icon-"] {
     /* use !important to prevent issues with browser extensions that change fonts */
@@ -68,4 +83,80 @@
     content: "\e90a";
     color: #cde1f2;
   }
+
+.display-4 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 4.375rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #9281EF;
+}
   
+.pt-5 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 1.2;
+  color: #424770;
+}
+
+.pt-2 {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.56;
+  color: #848484;
+}
+
+.cuadro-superior {
+  border: 3px solid #16c6cc;
+  margin-bottom: 50px;
+  position: relative;
+  padding: 0 40px 40px 40px;
+}
+
+.cuadro-superior h1 {
+  position: absolute;
+  top: -8%;
+  right: 17%;
+  background-color: #fff;
+  width: 65%;
+}
+
+.cuadro-superior .boton-video {
+  position: absolute;
+  bottom: -5%;
+  right: 17%;
+  background-color: #fff;
+  width: 60%;
+  color: #424770;
+}
+
+.cuadro-superior button {
+  background-color: #fff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6610F2;
+  border: 1px solid #424770;
+}
+
+.cuadro-superior p {
+  text-align: left;
+}
+
+.boton-empezar {
+  background-color: #fff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6610F2;
+  border: 1px solid #424770;
+  padding: 0.5rem 1rem;
+  border-radius: 100rem;
+  margin-right: 10%;
+}
+
+footer {
+  background-color: #AAA;
+}
+
+header {
+  padding-bottom: 3%;
+}

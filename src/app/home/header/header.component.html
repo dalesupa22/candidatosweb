@@ -1,18 +1,28 @@
-<header>
+<header class="border-bottom">
   <div class="container my-5">
     <div class="row align-items-center">
       <div class="col-md-12 col-lg-7">
         <img src="../../../assets/images/map.svg" alt="" class="img-fluid">
       </div>
       <div class="col-md-12 col-lg-5 text-center">
-        <h1 class="font-weight-bold display-4">Oigame.org</h1>
-        <h2 class="pt-5">¿Que hacemos en Oigame?</h2>
-        <p class="pt-2">Recogemos las principales preocupaciones de diferentes lugares en Colombia.
-          Facilitamos el acceso público a esta información, para que tanto los ciudadanos como las
-          organizaciones públicas o privadas, puedan conocer las preocupaciones de los ciudadanos por
-          ubicación geográfica. Buscamos que quienes quieran plantear soluciones a las diferentes
-          problemáticas regionales, puedan acceder a lo que sus ciudadanos están pensando.</p>
-        <button class="btn btn-primary btn-lg px-4"><i class="fas fa-play"></i> Ver video</button>
+        <div class="cuadro-superior">
+          <h1 class="font-weight-bold display-4">OIGAME.org</h1>
+          <h2 class="pt-5">¿Qué hacemos en Oigame?</h2>
+          <p class="pt-2">Recogemos las principales preocupaciones de diferentes lugares en Colombia.
+            Facilitamos el acceso público a esta información, para que tanto los ciudadanos como las
+            organizaciones públicas o privadas, puedan conocer las preocupaciones de los ciudadanos por
+            ubicación geográfica. Buscamos que quienes quieran plantear soluciones a las diferentes
+            problemáticas regionales, puedan acceder a lo que sus ciudadanos están pensando.</p>
+        
+          <div class="boton-video">
+            <button class="btn btn-primary btn-lg px-4"><i class="fas fa-play"></i> Ver video</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <a href="http://oigame.org/" target="_blank" class="boton-empezar px-2">EMPEZAR FORMULARIO</a>
+          <button class="btn btn-primary btn-lg px-2 mt-2 mt-lg-0 boton-consultar float-right" (click)="redirect($event)">CONSULTAR RESULTADOS</button>
+        </div>
       </div>
     </div>
   </div>
