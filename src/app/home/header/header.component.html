@@ -1,6 +1,15 @@
 <header class="border-bottom">
   <div class="container my-5">
     <div class="row align-items-center">
+      <div class="col-md-12">
+        <div class="social-network">
+            <a href=""><i class="fab fa-facebook-f"></i></a>
+            <a href=""><i class="fab fa-twitter"></i></a>
+            <a href=""><i class="fab fa-slack-hash"></i></a>
+            <a href=""><i class="fab fa-pinterest-p"></i></a>
+            <a href=""><i class="fab fa-linkedin-in"></i></a>
+          </div>
+      </div>
       <div class="col-md-12 col-lg-7">
         <img src="../../../assets/images/map.svg" alt="" class="img-fluid">
       </div>
@@ -15,15 +24,18 @@
             problemáticas regionales, puedan acceder a lo que sus ciudadanos están pensando.</p>
         
           <div class="boton-video">
-            <button class="btn btn-primary btn-lg px-4"><i class="fas fa-play"></i> Ver video</button>
+            <button class="btn btn-primary btn-lg px-4" data-toggle="modal" data-target="#myModal"
+            (click)="abrirModal()"><i class="fas fa-play"></i> VER VIDEO</button>
           </div>
         </div>
 
         <div class="row">
           <a href="http://oigame.org/" target="_blank" class="boton-empezar px-2">EMPEZAR FORMULARIO</a>
-          <button class="btn btn-primary btn-lg px-2 mt-2 mt-lg-0 boton-consultar float-right" (click)="redirect($event)">CONSULTAR RESULTADOS</button>
+          <button class="px-2 mt-2 mt-lg-0 boton-consultar float-right" (click)="redirect($event)">CONSULTAR RESULTADOS</button>
         </div>
       </div>
     </div>
   </div>
-</header>
+</header> 
+
+<app-modal-video [urlVideo]="'https://www.youtube.com/embed/0QVOc1aagSE'"></app-modal-video>

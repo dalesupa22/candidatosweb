@@ -23,6 +23,11 @@
     font-family: 'Oswald Bold';
     src:  url('fonts/Oswald/Oswald-Bold.ttf') format('truetype');
   }
+
+  @font-face {
+    font-family: 'Montserrat';
+    src:  url('fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+  }
   
   [class^="icon-"], [class*=" icon-"] {
     /* use !important to prevent issues with browser extensions that change fonts */
@@ -91,6 +96,15 @@
   line-height: 1.2;
   color: #9281EF;
 }
+
+.titulo-footer {
+  font-family: 'Oswald', sans-serif;
+  font-size: 4.375rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #424770;
+  margin-bottom: 40px;
+}
   
 .pt-5 {
   font-family: 'Oswald', sans-serif;
@@ -131,11 +145,12 @@
 }
 
 .cuadro-superior button {
+  font-family: 'Montserrat', sans-serif;
   background-color: #fff;
   font-size: 0.875rem;
   font-weight: 500;
   color: #6610F2;
-  border: 1px solid #424770;
+  border: 2px solid #9281EF;
 }
 
 .cuadro-superior p {
@@ -143,20 +158,56 @@
 }
 
 .boton-empezar {
+  font-family: 'Montserrat', sans-serif;
   background-color: #fff;
   font-size: 0.875rem;
   font-weight: 500;
   color: #6610F2;
-  border: 1px solid #424770;
+  font-variant: small-caps;
+  border: 2px solid #9281EF;
   padding: 0.5rem 1rem;
   border-radius: 100rem;
-  margin-right: 10%;
+  margin-right: 3%;
+}
+
+.boton-empezar:hover {
+  text-decoration: none;
 }
 
 footer {
-  background-color: #AAA;
+  background-color: #E8E8E8;
 }
 
 header {
   padding-bottom: 3%;
+}
+
+.boton-consultar {
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: #fff;
+  background-color: #16c6cc;
+  border-color: #16c6cc;
+  border: 0;
+}
+
+.texto-footer {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.275rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #848484;
+}
+
+.py-5 {
+  text-align: center;
+}
+
+.contacto {
+  background-color: #fff;
+  color: #6610F2;
+  border: 3px solid #9281EF;
 }
