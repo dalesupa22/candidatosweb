@@ -33,10 +33,10 @@ export class ResultsComponent implements OnInit, AfterViewInit {
   constructor(private router: Router, private dataService: DataService) { }
 
   ngOnInit() {
-    this.category = 'C';
-    this.categoryTitle = 'C';
-    this.subcategoryTitle = `Corrupción`;
-    this.fillSelectOptions('Corrupción');
+    this.category = 'A';
+    this.categoryTitle = 'A';
+    this.subcategoryTitle = `Ambiente`;
+    this.fillSelectOptions('Ambiente');
   }
 
   ngAfterViewInit() {
@@ -194,45 +194,71 @@ export class ResultsComponent implements OnInit, AfterViewInit {
 
   private fillSelectOptions(category) {
     switch (category) {
-      case 'Corrupción':
-        this.category = 'C';
-        this.categoryTitle = 'C';
-        this.dataSelect = this.getCategoryCorruption();
-        break;
-      case 'Educación':
-        this.category = 'E';
-        this.categoryTitle = 'E';
-        this.dataSelect = this.getCategoryEducation();
-        break;
-      case 'Salud':
-        this.category = 'S';
-        this.categoryTitle = 'S';
-        this.dataSelect = this.getCategoryHealth();
-        break;
-      case 'Seguridad':
-        this.category = 'G';
-        this.categoryTitle = 'G';
-        this.dataSelect = this.getCategorySecurity();
-        break;
       case 'Ambiente':
         this.category = 'A';
         this.categoryTitle = 'A';
         this.dataSelect = this.getCategoryEnvironment();
         break;
-      case 'Discriminación':
+      case 'Salud':
+        this.category = 'B';
+        this.categoryTitle = 'B';
+        this.dataSelect = this.getCategoryHealth();
+        break;
+      case 'Infancia':
+        this.category = 'C';
+        this.categoryTitle = 'C';
+        this.dataSelect = this.getCategoryInfant();
+        break;
+      case 'Educación':
         this.category = 'D';
         this.categoryTitle = 'D';
+        this.dataSelect = this.getCategoryEducation();
+        break;
+      case 'Obras':
+        this.category = 'E';
+        this.categoryTitle = 'E';
+        this.dataSelect = this.getCategoryObras();
+        break;
+      case 'Seguridad':
+        this.category = 'F';
+        this.categoryTitle = 'F';
+        this.dataSelect = this.getCategorySecurity();
+        break;
+      case 'Corrupción':
+        this.category = 'G';
+        this.categoryTitle = 'G';
+        this.dataSelect = this.getCategoryCorruption();
+        break;
+      case 'Servicios públicos':
+        this.category = 'H';
+        this.categoryTitle = 'H';
+        this.dataSelect = this.getCategoryServiciosPublicos();
+        break;
+      case 'Discriminación':
+        this.category = 'I';
+        this.categoryTitle = 'I';
         this.dataSelect = this.getCategoryDiscrimination();
         break;
       case 'Movilidad':
-        this.category = 'M';
-        this.categoryTitle = 'M';
+        this.category = 'J';
+        this.categoryTitle = 'J';
         this.dataSelect = this.getCategoryTransport();
         break;
-      case 'Infancia':
-        this.category = 'I';
-        this.categoryTitle = 'I';
-        this.dataSelect = this.getCategoryInfant();
+
+      case 'Vivienda':
+        this.category = 'K';
+        this.categoryTitle = 'K';
+        this.dataSelect = this.getCategoryVivienda();
+        break;
+      case 'Pensiones':
+        this.category = 'L';
+        this.categoryTitle = 'L';
+        this.dataSelect = this.getCategoryPensiones();
+        break;
+      case 'QuejaEmpresa':
+        this.category = 'M';
+        this.categoryTitle = 'M';
+        this.dataSelect = this.getCategoryQuejaEmpresa();
         break;
     }
 
@@ -242,10 +268,10 @@ export class ResultsComponent implements OnInit, AfterViewInit {
   private getCategoryCorruption(): SubCategory[] {
     const subCatList: SubCategory[] = [];
 
-    subCatList.push({ id: 'C1', name: 'Obras' });
-    subCatList.push({ id: 'C2', name: 'Educación' });
-    subCatList.push({ id: 'C3', name: 'Salud' });
-    subCatList.push({ id: 'C4', name: 'Otros' });
+    subCatList.push({ id: 'G1', name: 'Obras' });
+    subCatList.push({ id: 'G2', name: 'Educación' });
+    subCatList.push({ id: 'G3', name: 'Salud' });
+    subCatList.push({ id: 'G4', name: 'Otros' });
 
     return subCatList;
   }
@@ -253,12 +279,12 @@ export class ResultsComponent implements OnInit, AfterViewInit {
   private getCategoryEducation(): SubCategory[] {
     const subCatList: SubCategory[] = [];
 
-    subCatList.push({ id: 'E1', name: '(Colegio) - No hay un centro educativo' });
-    subCatList.push({ id: 'E2', name: '(Colegio) - No hay como llegar al centro educativo' });
-    subCatList.push({ id: 'E3', name: '(Colegio) - No hay quién dicte clases en el centro educativo' });
-    subCatList.push({ id: 'E4', name: '(Univ.) - No hay un centro educativo' });
-    subCatList.push({ id: 'E5', name: '(Univ.) - No hay como llegar al centro educativo' });
-    subCatList.push({ id: 'E6', name: '(Univ.) - No hay quién dicte clases en el centro educativo' });
+    subCatList.push({ id: 'D1', name: '(Colegio) - No hay un centro educativo' });
+    subCatList.push({ id: 'D2', name: '(Colegio) - No hay como llegar al centro educativo' });
+    subCatList.push({ id: 'D3', name: '(Colegio) - No hay quién dicte clases en el centro educativo' });
+    subCatList.push({ id: 'D4', name: '(Univ.) - No hay un centro educativo' });
+    subCatList.push({ id: 'D5', name: '(Univ.) - No hay como llegar al centro educativo' });
+    subCatList.push({ id: 'D6', name: '(Univ.) - No hay quién dicte clases en el centro educativo' });
 
     return subCatList;
   }
@@ -266,11 +292,11 @@ export class ResultsComponent implements OnInit, AfterViewInit {
   private getCategoryHealth(): SubCategory[] {
     const subCatList: SubCategory[] = [];
 
-    subCatList.push({ id: 'S1', name: 'Problema de Salud' });
-    subCatList.push({ id: 'S2', name: 'Citas' });
-    subCatList.push({ id: 'S3', name: 'Autorizaciones' });
-    subCatList.push({ id: 'S4', name: 'Entrega de Medicamentos' });
-    subCatList.push({ id: 'S5', name: 'No hay acceso a un centro de salud a menos de 30 Km' });
+    subCatList.push({ id: 'B1', name: 'Problema de Salud' });
+    subCatList.push({ id: 'B2', name: 'Citas' });
+    subCatList.push({ id: 'B3', name: 'Autorizaciones' });
+    subCatList.push({ id: 'B4', name: 'Entrega de Medicamentos' });
+    subCatList.push({ id: 'B5', name: 'No hay acceso a un centro de salud a menos de 30 Km' });
 
     return subCatList;
   }
@@ -278,12 +304,12 @@ export class ResultsComponent implements OnInit, AfterViewInit {
   private getCategorySecurity(): SubCategory[] {
     const subCatList: SubCategory[] = [];
 
-    subCatList.push({ id: 'G1', name: 'Grupos al Margen de la Ley' });
-    subCatList.push({ id: 'G2', name: 'Violencia Intrafamiliar' });
-    subCatList.push({ id: 'G3', name: 'Amenazas' });
-    subCatList.push({ id: 'G4', name: 'Desplazamiento' });
-    subCatList.push({ id: 'G5', name: 'Víctima de robo' });
-    subCatList.push({ id: 'G6', name: 'Riñas' });
+    subCatList.push({ id: 'F1', name: 'Grupos al Margen de la Ley' });
+    subCatList.push({ id: 'F2', name: 'Violencia Intrafamiliar' });
+    subCatList.push({ id: 'F3', name: 'Amenazas' });
+    subCatList.push({ id: 'F4', name: 'Desplazamiento' });
+    subCatList.push({ id: 'F5', name: 'Víctima de robo' });
+    subCatList.push({ id: 'F6', name: 'Riñas' });
 
     return subCatList;
   }
@@ -296,8 +322,8 @@ export class ResultsComponent implements OnInit, AfterViewInit {
     subCatList.push({ id: 'A3', name: 'Residuos Tóxicos' });
     subCatList.push({ id: 'A4', name: 'Basuras' });
     subCatList.push({ id: 'A5', name: 'Minería' });
-    subCatList.push({ id: '', name: 'Deforestación' });
-    subCatList.push({ id: 'A6', name: 'Plagas' });
+    subCatList.push({ id: 'A6', name: 'Deforestación' });
+    subCatList.push({ id: 'A7', name: 'Plagas' });
 
     return subCatList;
   }
@@ -305,33 +331,84 @@ export class ResultsComponent implements OnInit, AfterViewInit {
   private getCategoryDiscrimination(): SubCategory[] {
     const subCatList: SubCategory[] = [];
 
-    subCatList.push({ id: 'D1', name: 'LGBTI' });
-    subCatList.push({ id: 'D2', name: 'Racial' });
-    subCatList.push({ id: 'D3', name: 'Social' });
-    subCatList.push({ id: 'D4', name: 'Ideológica' });
+    subCatList.push({ id: 'I1', name: 'LGBTI' });
+    subCatList.push({ id: 'I2', name: 'Racial' });
+    subCatList.push({ id: 'I3', name: 'Social' });
+    subCatList.push({ id: 'I4', name: 'Ideológica' });
 
     return subCatList;
   }
 
+
+  private getCategoryServiciosPublicos(): SubCategory[] {
+    const subCatList: SubCategory[] = [];
+
+    subCatList.push({ id: 'H1', name: 'Acueducto y alcantarillado' });
+    subCatList.push({ id: 'H2', name: 'Luz' });
+    subCatList.push({ id: 'H3', name: 'Gas' });
+    subCatList.push({ id: 'H4', name: 'Internet' });
+    subCatList.push({ id: 'H5', name: 'Transporte público' });
+
+    return subCatList;
+  }
+
+  private getCategoryObras(): SubCategory[] {
+    const subCatList: SubCategory[] = [];
+
+    subCatList.push({ id: 'D1', name: 'Víales' });
+    subCatList.push({ id: 'D2', name: 'Espacio público' });
+    subCatList.push({ id: 'D3', name: 'Parques' });
+    subCatList.push({ id: 'D4', name: 'Acueducto y alcantarillado' });
+    subCatList.push({ id: 'D5', name: 'Alumbrado' });
+    subCatList.push({ id: 'D6', name: 'Transporte público' });
+    subCatList.push({ id: 'D7', name: 'Semaforización' });
+
+    return subCatList;
+  }
+
+
   private getCategoryTransport(): SubCategory[] {
     const subCatList: SubCategory[] = [];
 
-    subCatList.push({ id: 'M1', name: 'No hay transporte público' });
-    subCatList.push({ id: 'M2', name: 'No hay carreteras o infraestructura para usar un medo de transporte' });
-    subCatList.push({ id: 'M3', name: 'Señalización' });
-    subCatList.push({ id: 'M4', name: 'Hay accidentes en la vía' });
+    subCatList.push({ id: 'J1', name: 'No hay transporte público' });
+    subCatList.push({ id: 'J2', name: 'No hay carreteras o infraestructura para usar un medo de transporte' });
+    subCatList.push({ id: 'J3', name: 'Señalización' });
+    subCatList.push({ id: 'J4', name: 'Hay accidentes en la vía' });
 
+    return subCatList;
+  }
+
+  private getCategoryVivienda(): SubCategory[] {
+    const subCatList: SubCategory[] = [];
+    subCatList.push({ id: 'K1', name: 'Vivienda inestable/precaria' });
+    subCatList.push({ id: 'K2', name: 'Hacinamiento' });
+    subCatList.push({ id: 'K3', name: 'Servicios inadecuados' });
+    subCatList.push({ id: 'K4', name: 'Cocina no apta' });
+    return subCatList;
+  }
+
+  private getCategoryPensiones(): SubCategory[] {
+    const subCatList: SubCategory[] = [];
+    subCatList.push({ id: 'L1', name: 'Punto de atención' });
+    subCatList.push({ id: 'L2', name: 'Monto incorrecto' });
+    return subCatList;
+  }
+
+
+  private getCategoryQuejaEmpresa(): SubCategory[] {
+    const subCatList: SubCategory[] = [];
+    subCatList.push({ id: 'M1', name: 'Queja empresa' });
     return subCatList;
   }
 
   private getCategoryInfant(): SubCategory[] {
     const subCatList: SubCategory[] = [];
 
-    subCatList.push({ id: 'I1', name: 'Trabajo forzado' });
-    subCatList.push({ id: 'I2', name: 'Abandono' });
-    subCatList.push({ id: 'I3', name: 'Violencia' });
-    subCatList.push({ id: 'I4', name: 'Salud' });
-    subCatList.push({ id: 'I5', name: 'Educación' });
+    subCatList.push({ id: 'C1', name: 'Trabajo forzado' });
+    subCatList.push({ id: 'C2', name: 'Abandono' });
+    subCatList.push({ id: 'C3', name: 'Violencia' });
+    subCatList.push({ id: 'C4', name: 'Salud' });
+    subCatList.push({ id: 'C5', name: 'Educación' });
 
     return subCatList;
   }
