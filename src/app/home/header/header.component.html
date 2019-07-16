@@ -1,5 +1,5 @@
 <header class="border-bottom">
-  <div class="container my-5">
+  <div class="container my-5 d-none d-lg-block">
     <div class="row align-items-center">
       <div class="col-md-12">
         <div class="social-network float-right">
@@ -27,9 +27,46 @@
         </div>
 
         <div class="row">
-          <a href="http://solicitud.oigame.org/" target="_blank" class="boton-empezar px-2">¡Quejate! Quejarse si sirve</a>
-          <button class="px-2 mt-2 mt-lg-0 boton-consultar float-right" (click)="redirect('results')">¡Mira las quejas en Colombia!</button>
+          <a href="http://solicitud.oigame.org/" target="_blank" class="boton-empezar px-2 col-12">¡Quejate! Quejarse si sirve</a>
+          <button class="px-2 mt-2 mt-lg-0 boton-consultar float-right col-12" (click)="redirect('results')">¡Mira las quejas en Colombia!</button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container my-3 d-lg-none">
+    <div class="row align-items-center">
+      <div class="col-12">
+        <div class="social-network float-right">
+            <a href=""><i class="fab fa-facebook-f"></i></a>
+            <a href=""><i class="fab fa-twitter"></i></a>
+            <a href=""><i class="fab fa-slack-hash"></i></a>
+            <a href=""><i class="fab fa-pinterest-p"></i></a>
+            <a href=""><i class="fab fa-linkedin-in"></i></a>
+          </div>
+      </div>
+
+      
+      <div class="col-12 text-center">
+        <div class="cuadro-superior">
+          <img src="https://s3.amazonaws.com/resourcesxert/OIG/disen%CC%83o+2-02.png" alt="" class="img-fluid">
+          <h2 class="pt-5">¿Qué hacemos en Oigame?</h2>
+          <p class="pt-2">Oímos tus quejas y las de todos los colombianos. Unimos las voces de quienes creen que quejarse sí sirve y buscamos a los indicados para solucionarlas. Amplificamos el alcance de las quejas a través de un mapa de Colombia, para que las organizaciones públicas o privadas puedan conocer las preocupaciones de los ciudadanos por ubicación geográfica.</p>
+        
+          <div class="boton-video">
+            <button class="btn btn-primary btn-lg px-4" data-toggle="modal" data-target="#myModal"
+            (click)="abrirModal()"><i class="fas fa-play"></i> VER VIDEO</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <a href="http://solicitud.oigame.org/" target="_blank" class="boton-empezar px-2 col-10 offset-1">¡Quejate! Quejarse si sirve</a>
+          <button class="px-2 mt-2 mt-lg-0 boton-consultar float-right col-10 offset-1" (click)="redirect('results')">¡Mira las quejas en Colombia!</button>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <img src="../../../assets/images/map.svg" alt="" class="img-fluid">
       </div>
     </div>
   </div>
