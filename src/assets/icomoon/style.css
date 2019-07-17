@@ -225,3 +225,17 @@ header .social-network a:hover {
 header .text-center {
   margin-top: 50px;
 }
+
+@media screen and (max-width: 768px) {
+  header .text-center {
+    margin-top: 0;
+  }
+
+  .pt-2 {
+    font-size: 0.9rem;
+  }
+
+  .img-fluid {
+    margin-top: 20px;
+  }
+}
