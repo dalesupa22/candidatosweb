@@ -35,6 +35,20 @@ export class DataService {
 
     return this.http.post<CounterCategory>(finalUrl, null);
   }
+
+  /**
+   * Documentation https://howtodoinjava.com/typescript/maps/ 25/07/2019
+   * https://ng2.codecraft.tv/es6-typescript/mapset/
+   * https://2ality.com/2015/08/es6-map-json.html
+   */
+
+  public getCounterAllSubCategories(category: String): Observable<string> {
+  const finalUrl =
+    `${this.actionUrl}getCounterAllSubCategories?category=${category}`;
+  console.log(finalUrl);
+
+  return this.http.post<string>(finalUrl, null);
+}
 }
 
 
