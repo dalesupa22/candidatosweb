@@ -44,50 +44,64 @@
     -moz-osx-font-smoothing: grayscale;
   }
   
-  .icon-7:before {
-    content: "\e906";
-    color: #cde1f2;
-  }
-  .icon-1:before {
-    content: "\e900";
+
+  .icon-1:before {  /*ambiente*/
+    content: "\e90d";
     color: #cde1f2;
   }
   .icon-2:before {
-    content: "\e901";
+    content: "\e90c";/*ambiente*/
     color: #cde1f2;
   }
   .icon-3:before {
-    content: "\e902";
+    content: "\e90b";/*Infancia*/
     color: #cde1f2;
   }
   .icon-4:before {
-    content: "\e903";
+    content: "\e90a";/*Educacion*/
     color: #cde1f2;
   }
   .icon-5:before {
-    content: "\e904";
+    content: "\e909";/*Infraestructura/Obras*/
     color: #cde1f2;
   }
   .icon-6:before {
-    content: "\e905";
+    content: "\e907";/*Seguridad*/
+    color: #cde1f2;
+  }
+  .icon-7:before {
+    content: "\e906";/*Corrupción*/
     color: #cde1f2;
   }
   .icon-8:before {
-    content: "\e907";
+    content: "\e905";/*Servicios públicos*/
     color: #cde1f2;
   }
-  .icon-9:before {
-    content: "\e908";
+
+.icon-9:before {
+  content: "\e904";/*Discriminación*/
+  color: #cde1f2;
+}
+
+  .icon-10:before {/*Movilidad*/
+    content: "\e903";
     color: #cde1f2;
   }
-  .icon-10:before {
-    content: "\e909";
+  .icon-11:before {/*Vivienda*/
+    content: "\e902";
     color: #cde1f2;
   }
-  .icon-11:before {
-    content: "\e90a";
-    color: #cde1f2;
-  }
+
+.icon-12:before {/*Pensiones*/
+  content: "\e901";
+  color: #cde1f2;
+}
+
+
+.icon-13:before {/*Queja empresa*/
+  content: "\e900";
+  color: #cde1f2;
+}
 
 .display-4 {
   font-family: 'Oswald', sans-serif;

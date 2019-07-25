@@ -5,48 +5,48 @@
     <div data-simplebar>
       <div class="filter">
         <a category-btn data-title="Ambiente" [ngClass]="{active: categoryTitle === 'A'}" (click)="clickCategory('Ambiente')">
-          <span class="icon-1"></span>
+          <span class="icon-1"></span>{{ counterCategory.countA }}
         </a>
         <a category-btn data-title="Salud" [ngClass]="{active: categoryTitle === 'B'}" (click)="clickCategory('Salud')">
-          <span class="icon-2"></span>
+          <span class="icon-2"></span>{{ counterCategory.countB }}
         </a>
         <a category-btn data-title="Infancia" [ngClass]="{active: categoryTitle === 'C'}" (click)="clickCategory('Infancia')">
-          <span class="icon-3"></span>
+          <span class="icon-3"></span>{{ counterCategory.countC }}
         </a>
 
         <a category-btn data-title="Educación" [ngClass]="{active: categoryTitle === 'D'}" (click)="clickCategory('Educación')">
-          <span class="icon-4"></span>
+          <span class="icon-4"></span>{{ counterCategory.countD }}
         </a>
-        <a category-btn data-title="Obras" [ngClass]="{active: categoryTitle === 'E'}" (click)="clickCategory('Obras')">
-          <span class="icon-6"></span>
+        <a category-btn data-title="Infraestructura" [ngClass]="{active: categoryTitle === 'E'}" (click)="clickCategory('Infraestructura')">
+          <span class="icon-5"></span>{{ counterCategory.countE }}
         </a>
         <a category-btn data-title="Seguridad" [ngClass]="{active: categoryTitle === 'F'}" (click)="clickCategory('Seguridad')">
-          <span class="icon-8"></span>
+          <span class="icon-6"></span>{{ counterCategory.countF }}
         </a>
 
         <a category-btn data-title="Corrupción" [ngClass]="{active: categoryTitle === 'G'}" (click)="clickCategory('Corrupción')">
-          <span class="icon-9"></span>
+          <span class="icon-7"></span>{{ counterCategory.countG }}
         </a>
         <a category-btn data-title="Servicios públicos" [ngClass]="{active: categoryTitle === 'H'}" (click)="clickCategory('Servicios públicos')">
-          <span class="icon-6"></span>
+          <span class="icon-8"></span>{{ counterCategory.countH }}
         </a>
         <a category-btn data-title="Discriminación" [ngClass]="{active: categoryTitle === 'I'}" (click)="clickCategory('Discriminación')">
-          <span class="icon-11"></span>
+          <span class="icon-9"></span>{{ counterCategory.countI }}
         </a>
         <a category-btn data-title="Movilidad" [ngClass]="{active: categoryTitle === 'J'}" (click)="clickCategory('Movilidad')">
-          <span class="icon-6"></span>
+          <span class="icon-10"></span>{{ counterCategory.countJ }}
         </a>
 
         <a category-btn data-title="Vivienda" [ngClass]="{active: categoryTitle === 'K'}" (click)="clickCategory('Vivienda')">
-          <span class="icon-6"></span>
+          <span class="icon-11"></span>{{ counterCategory.countK }}
         </a>
 
         <a category-btn data-title="Pensiones" [ngClass]="{active: categoryTitle === 'L'}" (click)="clickCategory('Vivienda')">
-          <span class="icon-6"></span>
+          <span class="icon-12"></span>{{ counterCategory.countL }}
         </a>
 
         <a category-btn data-title="Queja" [ngClass]="{active: categoryTitle === 'M'}" (click)="clickCategory('QuejaEmpresa')">
-          <span class="icon-6"></span>
+          <span class="icon-13"></span>{{ counterCategory.countM }}
         </a>
 
       </div>

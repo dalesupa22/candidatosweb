@@ -3,6 +3,7 @@ import { Configuration } from 'src/app/app.constants';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Record, Records } from '../models/records';
+import { CounterCategory } from '../models/counterCategory';
 
 @Injectable()
 export class DataService {
@@ -25,4 +26,15 @@ export class DataService {
 
     return this.http.post<Record>(finalUrl, null);
   }
+
+
+  public getSummaryCount(): Observable<CounterCategory> {
+    const finalUrl =
+      `${this.actionUrl}getSummaryCount`;
+    console.log(finalUrl);
+
+    return this.http.post<CounterCategory>(finalUrl, null);
+  }
 }
+
+

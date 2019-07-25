@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Record } from 'src/app/shared/models/records';
+import { CounterCategory } from 'src/app/shared/models/counterCategory';
 import { DataService } from 'src/app/shared/services/dataservice';
 import { SubCategory } from 'src/app/shared/models/subcategory';
 
@@ -22,6 +23,7 @@ export class ResultsComponent implements OnInit, AfterViewInit {
   public categoryTitle: String;
   public subcategoryTitle: String;
 
+  public counterCategory: CounterCategory;
   public data: Record;
   public message: String;
 
@@ -37,6 +39,17 @@ export class ResultsComponent implements OnInit, AfterViewInit {
     this.categoryTitle = 'A';
     this.subcategoryTitle = `Ambiente`;
     this.fillSelectOptions('Ambiente');
+
+    this.dataService.getSummaryCount()
+      .subscribe((data: CounterCategory) => {
+        this.counterCategory = data;
+        console.log(data);
+      }, error => () => {
+        console.log('Ocurrió un error al traer los datos', error);
+      }, () => {
+        console.log('Se obtienen los datos');
+      });
+
   }
 
   ngAfterViewInit() {
@@ -214,7 +227,7 @@ export class ResultsComponent implements OnInit, AfterViewInit {
         this.categoryTitle = 'D';
         this.dataSelect = this.getCategoryEducation();
         break;
-      case 'Obras':
+      case 'Infraestructura':
         this.category = 'E';
         this.categoryTitle = 'E';
         this.dataSelect = this.getCategoryObras();
